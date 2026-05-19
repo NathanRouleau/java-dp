@@ -5,6 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 public class Client {
@@ -88,12 +89,12 @@ public class Client {
         Reservation reservation = new Reservation(date);
         reservation.setNbPlaces(nbPlaces);
         reservation.setClient(this);
-        
+
         double total = type.calculerMontantTotal(nbPlaces, this.isPremium());
         reservation.setTotal(total);
-        
+
         this.reservations.add(reservation);
-        
+
         return reservation;
     }
 }
