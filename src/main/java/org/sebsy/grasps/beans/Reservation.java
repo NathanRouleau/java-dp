@@ -1,6 +1,8 @@
 package org.sebsy.grasps.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -10,6 +12,7 @@ import java.time.LocalDateTime;
 public class Reservation {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private LocalDateTime date;
@@ -100,6 +103,12 @@ public class Reservation {
      * @param client the client to set
      */
     public void setClient(Client client) {
+        if (this.client != null) {
+            this.client.getReservations().remove(this);
+        }
         this.client = client;
+        if (this.client != null) {
+            this.client.getReservations().add(this);
+        }
     }
 }

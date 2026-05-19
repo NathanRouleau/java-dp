@@ -82,18 +82,24 @@ public class Client {
         this.reservations = reservations;
     }
 
+    public void addReservation(Reservation reservation) {
+        this.reservations.add(reservation);
+    }
+
+    public void removeReservation(Reservation reservation) {
+        this.reservations.remove(reservation);
+    }
+
     /**
      * Crée, configure et ajoute une réservation pour ce client
      */
-    public Reservation faireReservation(LocalDateTime date, int nbPlaces, TypeReservation type) {
+    public Reservation creerReservation(LocalDateTime date, int nbPlaces, TypeReservation type) {
         Reservation reservation = new Reservation(date);
         reservation.setNbPlaces(nbPlaces);
         reservation.setClient(this);
 
         double total = type.calculerMontantTotal(nbPlaces, this.isPremium());
         reservation.setTotal(total);
-
-        this.reservations.add(reservation);
 
         return reservation;
     }
