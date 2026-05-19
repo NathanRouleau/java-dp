@@ -112,4 +112,15 @@ public class TypeReservation {
     public void setReductionPourcent(double reductionPourcent) {
         this.reductionPourcent = reductionPourcent;
     }
+
+    /**
+     * Calcule le montant total en fonction du nombre de places et du statut premium
+     */
+    public double calculerMontantTotal(int nbPlaces, boolean isPremium) {
+        double total = this.montant * nbPlaces;
+        if (isPremium) {
+            return total * (1 - this.reductionPourcent / 100.0);
+        }
+        return total;
+    }
 }

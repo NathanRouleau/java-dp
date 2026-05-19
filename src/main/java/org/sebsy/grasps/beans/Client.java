@@ -80,4 +80,20 @@ public class Client {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
+
+    /**
+     * Crée, configure et ajoute une réservation pour ce client
+     */
+    public Reservation faireReservation(LocalDateTime date, int nbPlaces, TypeReservation type) {
+        Reservation reservation = new Reservation(date);
+        reservation.setNbPlaces(nbPlaces);
+        reservation.setClient(this);
+        
+        double total = type.calculerMontantTotal(nbPlaces, this.isPremium());
+        reservation.setTotal(total);
+        
+        this.reservations.add(reservation);
+        
+        return reservation;
+    }
 }
