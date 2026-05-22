@@ -15,7 +15,6 @@ public class Commande {
         this.etat = new EtatCreation();
     }
 
-    // Les méthodes délèguent à l'état courant
     public void ajouterProduit(Produit produit) {
         etat.ajouterProduit(this, produit);
     }

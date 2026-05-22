@@ -3,7 +3,7 @@ package org.sebsy.strategy;
 public class Tri {
 
     public void exec(TypeTri typeTri, int[] tableau) {
-        // On demande au factory quelle stratégie utiliser
+        // demande au factory quelle stratégie utiliser
         Strategy strategy = StrategyFactory.getStrategy(typeTri);
 
         if (strategy != null) {

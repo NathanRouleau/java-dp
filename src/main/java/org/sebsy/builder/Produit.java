@@ -13,7 +13,6 @@ public class Produit {
     private List<Ingredient> ingredients = new ArrayList<>();
     private List<Allergene> allergenes = new ArrayList<>();
 
-    // Constructeur package-private : seul le Builder peut créer un Produit
     Produit() {}
 
     // Getters
@@ -25,7 +24,7 @@ public class Produit {
     public List<Ingredient> getIngredients() { return ingredients; }
     public List<Allergene> getAllergenes() { return allergenes; }
 
-    // Setters package-private : seul le Builder peut les utiliser
+    // Setters
     void setNom(String nom) { this.nom = nom; }
     void setGrade(String grade) { this.grade = grade; }
     void setCategorie(Categorie categorie) { this.categorie = categorie; }
